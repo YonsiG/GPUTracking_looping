@@ -54,6 +54,7 @@ void ZZZAna::Loop(const char* typeName)
    int sum_md_occupancies=0;
    for (int i=0;i<md_occupancies->size();i++)
    {
+      if (md_occupancies_module < md_occupancies->at(i)) md_occupancies_module = md_occupancies->at(i);
       sum_md_occupancies+=md_occupancies->at(i);
       myHists->md_occupancies_module->Fill(md_occupancies->at(i));
    }
@@ -62,6 +63,7 @@ void ZZZAna::Loop(const char* typeName)
    int sum_sg_occupancies=0;
    for (int i=0;i<sg_occupancies->size();i++)
    {
+      if (sg_occupancies_module < sg_occupancies->at(i)) sg_occupancies_module = sg_occupancies->at(i);
       sum_sg_occupancies = sum_sg_occupancies + sg_occupancies->at(i);
       myHists->sg_occupancies_module->Fill(sg_occupancies->at(i));
    }
@@ -70,6 +72,7 @@ void ZZZAna::Loop(const char* typeName)
    int sum_t3_occupancies=0;
    for (int i=0;i<t3_occupancies->size();i++)
    {
+      if (t3_occupancies_module < t3_occupancies->at(i)) t3_occupancies_module = t3_occupancies->at(i);
       sum_t3_occupancies+=t3_occupancies->at(i);
       myHists->t3_occupancies_module->Fill(t3_occupancies->at(i));
    }
@@ -86,6 +89,7 @@ void ZZZAna::Loop(const char* typeName)
    int sum_t5_occupancies=0;
    for (int i=0;i<t5_occupancies->size();i++)
    {
+      if (t5_occupancies_module < t5_occupancies->at(i)) t5_occupancies_module = t5_occupancies->at(i);
       sum_t5_occupancies+=t5_occupancies->at(i);
       myHists->t5_occupancies_module->Fill(t5_occupancies->at(i));
    }
