@@ -52,18 +52,23 @@ void ZZZAna::Loop(const char* typeName)
    myHists->tc_occupancies->Fill(tc_occupancies);
 
    int sum_md_occupancies=0;
-   for (int i=0;i<md_occupancies->size();i++)
+   for (int i=0;i<md_occupancies->size()-1;i++)
    {
-      if (md_occupancies_module < md_occupancies->at(i)) md_occupancies_module = md_occupancies->at(i);
+      if (max_md_occupancies_module < md_occupancies->at(i)) max_md_occupancies_module = md_occupancies->at(i);
       sum_md_occupancies+=md_occupancies->at(i);
       myHists->md_occupancies_module->Fill(md_occupancies->at(i));
+      if (md_occupancies->at(i)>100){
+         myHists->module_layers->Fill(module_layers->at(i));
+         myHists->module_subdets->Fill(module_subdets->at(i));
+         myHists->module_rings->Fill(module_rings->at(i));
+     }
    }
    myHists->md_occupancies_event->Fill(sum_md_occupancies);
 
    int sum_sg_occupancies=0;
-   for (int i=0;i<sg_occupancies->size();i++)
+   for (int i=0;i<sg_occupancies->size()-1;i++)
    {
-      if (sg_occupancies_module < sg_occupancies->at(i)) sg_occupancies_module = sg_occupancies->at(i);
+      if (max_sg_occupancies_module < sg_occupancies->at(i)) max_sg_occupancies_module = sg_occupancies->at(i);
       sum_sg_occupancies = sum_sg_occupancies + sg_occupancies->at(i);
       myHists->sg_occupancies_module->Fill(sg_occupancies->at(i));
    }
@@ -72,7 +77,7 @@ void ZZZAna::Loop(const char* typeName)
    int sum_t3_occupancies=0;
    for (int i=0;i<t3_occupancies->size();i++)
    {
-      if (t3_occupancies_module < t3_occupancies->at(i)) t3_occupancies_module = t3_occupancies->at(i);
+      if (max_t3_occupancies_module < t3_occupancies->at(i)) max_t3_occupancies_module = t3_occupancies->at(i);
       sum_t3_occupancies+=t3_occupancies->at(i);
       myHists->t3_occupancies_module->Fill(t3_occupancies->at(i));
    }
@@ -89,7 +94,7 @@ void ZZZAna::Loop(const char* typeName)
    int sum_t5_occupancies=0;
    for (int i=0;i<t5_occupancies->size();i++)
    {
-      if (t5_occupancies_module < t5_occupancies->at(i)) t5_occupancies_module = t5_occupancies->at(i);
+      if (max_t5_occupancies_module < t5_occupancies->at(i)) max_t5_occupancies_module = t5_occupancies->at(i);
       sum_t5_occupancies+=t5_occupancies->at(i);
       myHists->t5_occupancies_module->Fill(t5_occupancies->at(i));
    }

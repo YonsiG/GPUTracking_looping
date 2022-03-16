@@ -1,19 +1,27 @@
 Author: GUYANXI
-Date: 02-09-2019
-Last Modified: 16-09-2019
+Date: 03-15-2022
 
-This package is used for ZZZ BSM study.
+This programs requires a readout in the previous GPU step, which is the input rootfile. The environment setting would be using the uaf-10.t2.ucsd.edu server. To set the environment, simply run 
 
-All the source codes are stored in "source_code" folder.
-The final_state_study_4channels.C file is used for selecting final state and ee/mm/em/all channel study, seperately. The truth_level_study.C file is used for truth level 3 Zbosons study. The final_state_2F ( 1F2J / 4J ).C are used for 2fatjets ( 1fatjet+2jet / 4jets )
-Either of them need to be copied and renamed as "ZZZAna.C" for use.
+>> source command.txt
+>> mkdir plots
+>> mkdir outfiles
 
-<1> source ~/command.txt
+To compile, 
 
-<2> cd source_code
-    ./gcc.sh
+>> . gcc.sh
 
-<3> cd ../run 
-    ./run.sh
+To run, go to source_code/ and run the ZZZAna.exe
 
-<4> ./run_ZJet.sh
+>> cd source_code/
+>> ./ZZZAna.exe filelist/filename.txt data
+
+To make plots, go to plot_program/
+
+>> cd plot_program/
+>> . gcc_plots.sh
+>> ./plots.exe
+
+To get quantiles, go to python_utils/
+>> cd python_utils/
+>> python get_quantile.py

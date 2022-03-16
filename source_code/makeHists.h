@@ -27,6 +27,10 @@ class makeHists
   TH1D *t5_occupancies_module;
   TH1D *t5_occupancies_event;
 
+  TH1D *module_layers;
+  TH1D *module_subdets;
+  TH1D *module_rings;
+
   void createHists(const char* fileName); 
   void saveHists();
 };

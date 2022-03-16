@@ -44,13 +44,16 @@ class ZZZAna
  std::vector<int>*                  t3_occupancies=0;
  std::vector<int>*                  t4_occupancies=0;
  std::vector<int>*                  t5_occupancies=0;
+ std::vector<int>*                  module_layers=0;
+ std::vector<int>*                  module_subdets=0;
+ std::vector<int>*                  module_rings=0;
  
  /************Statistical variables**************/
  Int_t                              Sta_TotalNumber;
- Int_t                              md_occupancies_module;
- Int_t                              sg_occupancies_module;
- Int_t                              t3_occupancies_module;
- Int_t                              t5_occupancies_module;
+ Int_t                              max_md_occupancies_module;
+ Int_t                              max_sg_occupancies_module;
+ Int_t                              max_t3_occupancies_module;
+ Int_t                              max_t5_occupancies_module;
 
  /******************functions*******************/
  ZZZAna(const char* infileName, const char* typeName);
@@ -82,10 +85,10 @@ void ZZZAna::Initial(const char* rootName, int rootNumber)
  Sta_TotalNumber = 0;
  cout<<"**Running starting Rootfile: "<<rootNumber<<endl;
 
- md_occupancies_module = 0;
- sg_occupancies_module = 0;
- t3_occupancies_module = 0;
- t5_occupancies_module = 0;
+ max_md_occupancies_module = 0;
+ max_sg_occupancies_module = 0;
+ max_t3_occupancies_module = 0;
+ max_t5_occupancies_module = 0;
 
  TTree *tree;
  TFile *file = (TFile *)gROOT->GetListOfFiles()->FindObject(rootName);
@@ -107,6 +110,9 @@ void ZZZAna::Initial(const char* rootName, int rootNumber)
  fChain->SetBranchAddress("t3_occupancies",&t3_occupancies);
  fChain->SetBranchAddress("t4_occupancies",&t4_occupancies);
  fChain->SetBranchAddress("t5_occupancies",&t5_occupancies);
+ fChain->SetBranchAddress("module_layers",&module_layers);
+ fChain->SetBranchAddress("module_subdets",&module_subdets);
+ fChain->SetBranchAddress("module_rings",&module_rings);
 }
 
 void ZZZAna::End(int rootNumber)
@@ -122,10 +128,10 @@ void ZZZAna::Save(int rootNumber)
 {
  cout<<"**Running: "<<rootNumber<<"  rootfiles finished"<<endl;
  cout<<"**The files contain "<<Sta_TotalNumber<<" events"<<endl;
- cout<<"**Max md_occupanvies per module: "<<md_occupancies_module<<endl;
- cout<<"**Max sg_occupanvies per module: "<<sg_occupancies_module<<endl;
- cout<<"**Max t3_occupanvies per module: "<<t3_occupancies_module<<endl;
- cout<<"**Max t5_occupanvies per module: "<<t5_occupancies_module<<endl;
+ cout<<"**Max md_occupancies per module: "<<max_md_occupancies_module<<endl;
+ cout<<"**Max sg_occupancies per module: "<<max_sg_occupancies_module<<endl;
+ cout<<"**Max t3_occupancies per module: "<<max_t3_occupancies_module<<endl;
+ cout<<"**Max t5_occupancies per module: "<<max_t5_occupancies_module<<endl;
  if(myHists)
  {
   myHists->saveHists();
