@@ -51,27 +51,42 @@ void ZZZAna::Loop(const char* typeName)
    myHists->pT3_occupancies->Fill(pT3_occupancies);
    myHists->tc_occupancies->Fill(tc_occupancies);
 
+   int category_number;
+   int eta_number;
+
    int sum_md_occupancies=0;
+   int sum_sg_occupancies=0;
    for (int i=0;i<md_occupancies->size()-1;i++)
    {
+      if (module_layers->at(i)<=3 && module_subdets->at(i)==5) category_number = 0;
+      if (module_layers->at(i)>=4 && module_subdets->at(i)==5) category_number = 1;
+      if (module_layers->at(i)<=2 && module_subdets->at(i)==4 && module_rings->at(i)>=11) category_number = 2;
+      if (module_layers->at(i)>=3 && module_subdets->at(i)==4 && module_rings->at(i)>=8) category_number = 2;
+      if (module_layers->at(i)<=2 && module_subdets->at(i)==4 && module_rings->at(i)<=10) category_number = 3;
+      if (module_layers->at(i)>=3 && module_subdets->at(i)==4 && module_rings->at(i)<=7) category_number = 3;
+      if (module_layers->at(i)==4 && module_subdets->at(i)==5) category_number = 4;
+      if (module_layers->at(i)==5 && module_subdets->at(i)==5) category_number = 5;
+      if (module_layers->at(i)==6 && module_subdets->at(i)==5) category_number = 6;
+
+      if (abs(module_eta->at(i))<0.75) eta_number=0;
+      if (abs(module_eta->at(i))>0.75 && abs(module_eta->at(i))<1.5) eta_number=1;
+      if (abs(module_eta->at(i))>1.5 && abs(module_eta->at(i))<2.25) eta_number=2;
+      if (abs(module_eta->at(i))>2.25 && abs(module_eta->at(i))<3) eta_number=3;
+      
+      myHists->md_occupancies_module_by_eta[category_number][eta_number]->Fill(md_occupancies->at(i));
+
       if (max_md_occupancies_module < md_occupancies->at(i)) max_md_occupancies_module = md_occupancies->at(i);
       sum_md_occupancies+=md_occupancies->at(i);
       myHists->md_occupancies_module->Fill(md_occupancies->at(i));
-      if (md_occupancies->at(i)>100){
-         myHists->module_layers->Fill(module_layers->at(i));
-         myHists->module_subdets->Fill(module_subdets->at(i));
-         myHists->module_rings->Fill(module_rings->at(i));
-     }
-   }
-   myHists->md_occupancies_event->Fill(sum_md_occupancies);
 
-   int sum_sg_occupancies=0;
-   for (int i=0;i<sg_occupancies->size()-1;i++)
-   {
+      myHists->sg_occupancies_module_by_eta[category_number][eta_number]->Fill(sg_occupancies->at(i));
+
       if (max_sg_occupancies_module < sg_occupancies->at(i)) max_sg_occupancies_module = sg_occupancies->at(i);
       sum_sg_occupancies = sum_sg_occupancies + sg_occupancies->at(i);
       myHists->sg_occupancies_module->Fill(sg_occupancies->at(i));
+
    }
+   myHists->md_occupancies_event->Fill(sum_md_occupancies);
    myHists->sg_occupancies_event->Fill(sum_sg_occupancies);
 
    int sum_t3_occupancies=0;

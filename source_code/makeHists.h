@@ -18,14 +18,24 @@ class makeHists
 
   TH1D *md_occupancies_module;
   TH1D *md_occupancies_event;
+  TH1D *md_occupancies_module_by_eta[7][4];
+  TH1D *md_occupancies_module_by_r[7][4];
   TH1D *sg_occupancies_module;
   TH1D *sg_occupancies_event;
+  TH1D *sg_occupancies_module_by_eta[7][4];
+  TH1D *sg_occupancies_module_by_r[7][4];
   TH1D *t3_occupancies_module;
   TH1D *t3_occupancies_event;
+  TH1D *t3_occupancies_module_by_eta[7][4];
+  TH1D *t3_occupancies_module_by_r[7][4];
   TH1D *t4_occupancies_module;
   TH1D *t4_occupancies_event;
+  TH1D *t4_occupancies_module_by_eta[7][4];
+  TH1D *t4_occupancies_module_by_r[7][4];
   TH1D *t5_occupancies_module;
   TH1D *t5_occupancies_event;
+  TH1D *t5_occupancies_module_by_eta[7][4];
+  TH1D *t5_occupancies_module_by_r[7][4];
 
   TH1D *module_layers;
   TH1D *module_subdets;

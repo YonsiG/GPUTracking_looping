@@ -1,7 +1,7 @@
 import ROOT
 import array
 
-file = ROOT.TFile("../outfiles/PU200_500_selected.root")
+file = ROOT.TFile("../outfiles/PU200_200_selected.root")
 
 xq = array.array('d',[0.9,0.99,0.9999,1])
 yq = array.array('d',[0,0,0,0])

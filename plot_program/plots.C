@@ -39,18 +39,18 @@ int main()
   bool IsCutFlow = false;
   bool DoRebin = false;
 
-  char filename1[100] = "../outfiles/PU200_500_selected.root";
+  char filename1[100] = "../outfiles/PU200_200_selected.root";
   char filename2[100] = "../../outfiles/C2V_3/samples_1_3_22/WZH_1_scaled.root"; //if you only want to draw one plot, use filename1 only
 
-  char plotname1[100] = "module_layers";
+  char plotname1[100] = "md_occupancies_module_by_eta5_1";
   char plotname2[100] = "third_fatjet_btag_score"; //if you only want to draw one plot, use plotname1 only
 
-  char saveFileName[100] = "../plots/module_layers_PU200_500_selected.png";
+  char saveFileName[100] = "../plots/md_occupancies_module_by_eta_PU200_200_5_1.png";
 
-  char Xtitle[100] = "module layers";
+  char Xtitle[100] = "module occupancy";
   char Ytitle[100] = "entries";
 
-  char legend1[100] = "module layers";
+  char legend1[100] = "module occupancy";
   char legend2[100] = "before_cut";
 
   double minX = 25;    //if SetXRange

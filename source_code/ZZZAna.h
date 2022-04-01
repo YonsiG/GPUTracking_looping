@@ -47,6 +47,8 @@ class ZZZAna
  std::vector<int>*                  module_layers=0;
  std::vector<int>*                  module_subdets=0;
  std::vector<int>*                  module_rings=0;
+ std::vector<float>*                module_eta=0;
+ std::vector<float>*                module_r=0;
  
  /************Statistical variables**************/
  Int_t                              Sta_TotalNumber;
@@ -113,6 +115,8 @@ void ZZZAna::Initial(const char* rootName, int rootNumber)
  fChain->SetBranchAddress("module_layers",&module_layers);
  fChain->SetBranchAddress("module_subdets",&module_subdets);
  fChain->SetBranchAddress("module_rings",&module_rings);
+ fChain->SetBranchAddress("module_eta",&module_eta);
+ fChain->SetBranchAddress("module_r",&module_r);
 }
 
 void ZZZAna::End(int rootNumber)
