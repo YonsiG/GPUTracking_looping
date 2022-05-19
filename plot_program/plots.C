@@ -39,13 +39,13 @@ int main()
   bool IsCutFlow = false;
   bool DoRebin = false;
 
-  char filename1[100] = "../outfiles/PU200_200_selected.root";
+  char filename1[100] = "../outfiles/PU200_selected.root";
   char filename2[100] = "../../outfiles/C2V_3/samples_1_3_22/WZH_1_scaled.root"; //if you only want to draw one plot, use filename1 only
 
-  char plotname1[100] = "sg_occupancies_module_by_eta1_1";
+  char plotname1[100] = "t3_occupancies_module_by_eta2_2";
   char plotname2[100] = "third_fatjet_btag_score"; //if you only want to draw one plot, use plotname1 only
 
-  char saveFileName[100] = "../plots/sg_occupancies_module_by_eta_PU200_200_1_1.png";
+  char saveFileName[100] = "../plots/t3_occupancies_module_by_eta_PU200_200_2_2.png";
 
   char Xtitle[100] = "module occupancy";
   char Ytitle[100] = "entries";
