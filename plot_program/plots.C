@@ -42,10 +42,10 @@ int main()
   char filename1[100] = "../outfiles/PU200_200_selected.root";
   char filename2[100] = "../../outfiles/C2V_3/samples_1_3_22/WZH_1_scaled.root"; //if you only want to draw one plot, use filename1 only
 
-  char plotname1[100] = "md_occupancies_module_by_eta5_1";
+  char plotname1[100] = "sg_occupancies_module_by_eta1_1";
   char plotname2[100] = "third_fatjet_btag_score"; //if you only want to draw one plot, use plotname1 only
 
-  char saveFileName[100] = "../plots/md_occupancies_module_by_eta_PU200_200_5_1.png";
+  char saveFileName[100] = "../plots/sg_occupancies_module_by_eta_PU200_200_1_1.png";
 
   char Xtitle[100] = "module occupancy";
   char Ytitle[100] = "entries";
@@ -254,7 +254,9 @@ int main()
   h1->SetTitle("");
   h1->SetLineColor(kBlue);
   h1->SetLineWidth(2.0);
-  h1->SetStats(0);
+//  h1->SetStats(0);
+  h1->SetStats(1);
+  gStyle->SetOptStat("me");
   h1->GetXaxis()->SetTitle(Xtitle);
   h1->GetYaxis()->SetTitle(Ytitle);
   h1->GetYaxis()->SetTitleSize(0.04);
